@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SI_ERAT - Sistem Informasi Terintegrasi</title>
+    <style>
+        :root {
+            --teal-primary: #008080; /* Warna utama sesuai proposal */
+            --mint-secondary: #f5fffa; /* Warna relaksasi */
+            --coral-accent: #ff7f50; /* Warna harapan */
+            --soft-blue: #e0f7f4;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            margin: 0; 
+            background-color: var(--mint-secondary); 
+            color: #333;
+        }
+
+        /* Top Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { font-weight: bold; font-size: 1.5rem; color: var(--teal-primary); }
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--teal-primary); }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 10%;
+            background: var(--soft-blue);
+            border-bottom-left-radius: 100px;
+            border-bottom-right-radius: 100px;
+        }
+        .hero-text { max-width: 500px; }
+        .hero-text h1 { color: var(--teal-primary); font-size: 2.5rem; margin-bottom: 10px; }
+        .greeting-box {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: bold;
+            color: var(--teal-primary);
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Features Section */
+        .container { padding: 60px 10%; }
+        .section-title { text-align: center; margin-bottom: 40px; color: var(--teal-primary); }
+
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 30px;
+            text-align: center;
+            transition: 0.4s;
+            border: 1px solid transparent;
+            text-decoration: none;
+            color: inherit;
+        }
+        .card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--teal-primary);
+            box-shadow: 0 10px 30px rgba(0,128,128,0.1);
+        }
+        .card-icon { font-size: 3.5rem; margin-bottom: 20px; display: block; }
+        .card h3 { color: var(--teal-primary); margin-bottom: 15px; }
+        .card p { font-size: 0.95rem; color: #666; line-height: 1.5; }
+
+        footer { text-align: center; padding: 40px; background: white; margin-top: 50px; color: #888; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">🛡️ SI_ERAT</div>
+        <div class="nav-links">
+            <a href="index.html">Beranda</a>
+            <a href="edukasi.html">Edukasi</a>
+            <a href="relaksasi.html">Relaksasi</a>
+            <a href="aduan.html">Lapor Aduan</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Lindungi Diri, <br>Saling Menopang.</h1>
+            <p>Platform terintegrasi untuk pencegahan perundungan dan dukungan kesehatan mental remaja.</p>
+            <div class="greeting-box">Halo, kamu tidak sendirian hari ini 🍃</div>
+        </div>
+        <div class="hero-image">
+            <span style="font-size: 150px;">🤝</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title">Fitur Utama SI_ERAT</h2>
+        <div class="grid-features">
+            <a href="edukasi.html" class="card">
+                <span class="card-icon">📚</span>
+                <h3>Edukasi</h3>
+                <p>Akses poster, video animasi, dan role play tentang kesehatan mental.</p>
+            </a>
+
+            <a href="relaksasi.html" class="card">
+                <span class="card-icon">🧘‍♂️</span>
+                <h3>Relaksasi</h3>
+                <p>Gunakan teknik mindful breathing untuk menenangkan pikiranmu.</p>
+            </a>
+
+            <a href="aduan.html" class="card" style="background-color: #fff9f9;">
+                <span class="card-icon">📢</span>
+                <h3>Aduan</h3>
+                <p>Laporkan kejadian perundungan secara aman, resmi, dan anonim.</p>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SI_ERAT - Sistem Informasi Edukasi, Relaksasi, dan Aduan Terintegrasi</p>
+    </footer>
+
+</body>
+</html>

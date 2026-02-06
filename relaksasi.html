@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SI_ERAT - Relaksasi</title>
+    <style>
+        :root {
+            --teal: #008080;
+            --mint: #f5fffa;
+            --soft-green: #e0f2f1;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--mint); margin: 0; text-align: center; }
+        header { background: var(--teal); color: white; padding: 1.5rem; }
+        nav { background: #006666; padding: 10px; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; }
+        
+        /* Animasi Mindful Breathing */
+        .breathing-circle {
+            width: 200px;
+            height: 200px;
+            background: var(--teal);
+            border-radius: 50%;
+            margin: 50px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: breathe 8s infinite ease-in-out; /* Konsep pause–think–act */
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); background: #008080; }
+            40% { transform: scale(1.5); background: #4db6ac; }
+            60% { transform: scale(1.5); }
+        }
+
+        .instruction { font-size: 1.2rem; color: #555; margin-bottom: 30px; }
+        .quote { font-style: italic; color: var(--teal); background: white; padding: 20px; border-radius: 15px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Fitur Relaksasi</h1>
+</header>
+
+<nav>
+    <a href="index.html">Beranda</a>
+    <a href="edukasi.html">Edukasi</a>
+    <a href="relaksasi.html">Relaksasi</a>
+    <a href="aduan.html">Lapor Aduan</a>
+</nav>
+
+<div class="container">
+    <h2>Latihan Pernapasan (Mindful Breathing)</h2>
+    <p class="instruction">Ikuti lingkaran: Tarik napas saat membesar, tahan sebentar, dan hembuskan saat mengecil.</p>
+    
+    <div class="breathing-circle">BERNAPAS</div>
+
+    <div class="quote">
+        <p>"Kamu lebih kuat dari yang kamu bayangkan. Ambil jeda sejenak untuk dirimu sendiri."</p>
+        <small>— Biblioterapi SI_ERAT</small>
+    </div>
+</div>
+
+</body>
+</html>

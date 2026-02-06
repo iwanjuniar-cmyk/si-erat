@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SI_ERAT - Edukasi</title>
+    <style>
+        :root { --teal: #008080; --mint: #f5fffa; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--mint); margin: 0; }
+        header { background: var(--teal); color: white; padding: 1.5rem; text-align: center; }
+        nav { background: #006666; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        
+        .container { max-width: 1000px; margin: 30px auto; padding: 20px; }
+        .grid-edukasi { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card-konten { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .card-konten img, .card-konten video { width: 100%; display: block; }
+        .info { padding: 15px; }
+        .tag { background: #e0f2f1; color: var(--teal); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header><h1>Pusat Edukasi SI_ERAT</h1></header>
+<nav>
+    <a href="index.html">Beranda</a>
+    <a href="edukasi.html">Edukasi</a>
+    <a href="relaksasi.html">Relaksasi</a>
+    <a href="aduan.html">Lapor Aduan</a>
+</nav>
+
+<div class="container">
+    <h2>Materi Pembelajaran</h2>
+    <div class="grid-edukasi">
+        <div class="card-konten">
+            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=500" alt="Poster Edukasi">
+            <div class="info">
+                <span class="tag">Poster</span>
+                <h3>Kenali Jenis Perundungan</h3>
+                <p>Pahami perbedaan perundungan fisik, verbal, dan cyber.</p>
+            </div>
+        </div>
+
+        <div class="card-konten">
+            <div style="background: #ccc; height: 200px; display: flex; align-items: center; justify-content: center;">
+                <span>Video Animasi</span>
+            </div>
+            <div class="info">
+                <span class="tag">Video Role Play</span>
+                <h3>Cara Menghadapi Perundungan</h3>
+                <p>Tonton video simulasi untuk tahu apa yang harus dilakukan.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
