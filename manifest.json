@@ -1,0 +1,16 @@
+{
+  "name": "SI_ERAT - Safe Space",
+  "short_name": "SI_ERAT",
+  "description": "Sistem Informasi Edukasi, Relaksasi, dan Aduan Terintegrasi",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f5fffa",
+  "theme_color": "#008080",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3064/3064197.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
