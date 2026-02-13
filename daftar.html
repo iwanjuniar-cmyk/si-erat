@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Akun SI_ERAT</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f5fffa; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .register-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+        h2 { color: #008080; text-align: center; }
+        label { display: block; margin-top: 10px; font-weight: 500; color: #555; }
+        input, select { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .info-box { background: #e0f7f4; padding: 10px; border-radius: 8px; font-size: 0.85rem; color: #006666; margin-top: 5px; display: none; }
+        button { width: 100%; padding: 14px; background: #008080; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 20px; }
+        .back-login { text-align: center; margin-top: 15px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="register-card">
+        <h2>Daftar Akun Baru</h2>
+        <form id="registerForm">
+            <label>Pilih Peran</label>
+            <select id="regRole" onchange="showInfo()" required>
+                <option value="">-- Pilih Peran --</option>
+                <option value="siswa">Siswa (Langsung Aktif)</option>
+                <option value="guru">Guru / Konselor</option>
+                <option value="puskesmas">Puskesmas</option>
+                <option value="dinkes">Dinas Kesehatan</option>
+            </select>
+
+            <div id="adminInfo" class="info-box">
+                ⚠️ Akun untuk peran ini memerlukan verifikasi Admin sebelum dapat digunakan.
+            </div>
+
+            <label>Nama Lengkap</label>
+            <input type="text" placeholder="Masukkan nama lengkap" required>
+
+            <label>Instansi / Sekolah</label>
+            <input type="text" placeholder="Nama Sekolah atau Wilayah Kerja" required>
+
+            <label>Password</label>
+            <input type="password" placeholder="Buat password" required>
+
+            <button type="submit">Daftar Sekarang</button>
+        </form>
+        <div class="back-login">
+            Sudah punya akun? <a href="login.html">Login di sini</a>
+        </div>
+    </div>
+
+    <script>
+        function showInfo() {
+            const role = document.getElementById('regRole').value;
+            const info = document.getElementById('adminInfo');
+            // Menampilkan info verifikasi untuk non-siswa 
+            if (role !== 'siswa' && role !== '') {
+                info.style.display = 'block';
+            } else {
+                info.style.display = 'none';
+            }
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const role = document.getElementById('regRole').value;
+            
+            if (role === 'siswa') {
+                alert('Pendaftaran Berhasil! Akun Siswa Anda sudah aktif. Silakan login.');
+            } else {
+                alert('Pendaftaran Berhasil! Mohon tunggu proses verifikasi admin untuk akun ' + role + '.');
+            }
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

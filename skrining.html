@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skrining SKPR-SIERAT</title>
+    <style>
+        :root { --teal: #008080; --mint: #f5fffa; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--mint); padding: 20px; color: #333; }
+        .container { max-width: 800px; background: white; margin: auto; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        h2 { color: var(--teal); text-align: center; margin-bottom: 5px; }
+        
+        /* Penjelasan Angka 0-3 */
+        .info-box { 
+            background: #eef9f9; 
+            padding: 15px; 
+            border-radius: 12px; 
+            border-left: 5px solid var(--teal); 
+            margin: 20px 0;
+        }
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 0.9rem; }
+
+        /* Penjelasan Kategori Skor */
+        .category-box {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+        }
+        .cat-item { margin-bottom: 8px; display: flex; align-items: center; }
+        .dot { height: 12px; width: 12px; border-radius: 50%; display: inline-block; margin-right: 10px; }
+
+        .section-title { background: var(--teal); color: white; padding: 10px; border-radius: 8px; margin: 25px 0 10px; font-weight: bold; }
+        .question { margin-bottom: 15px; padding: 12px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .question label { flex: 1; padding-right: 15px; }
+        
+        select { padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc; cursor: pointer; }
+        .btn-hasil { width: 100%; padding: 15px; background: var(--teal); color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 1.1rem; font-weight: bold; margin-top: 25px; }
+        
+        .result-box { display: none; margin-top: 25px; padding: 25px; border-radius: 15px; text-align: center; }
+        .btn-link { display: inline-block; margin: 10px 5px; padding: 10px 20px; background: white; border-radius: 8px; text-decoration: none; color: #333; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Skrining Perundungan (SKPR-SIERAT)</h2>
+
+    <div class="info-box">
+        <strong>Petunjuk Angka:</strong>
+        <div class="info-grid">
+            <div>0 : Tidak Pernah</div>
+            <div>1 : Jarang</div>
+            <div>2 : Sering</div>
+            <div>3 : Sangat Sering</div>
+        </div>
+    </div>
+
+    <div class="category-box">
+        <strong>Kategori Hasil:</strong>
+        <div class="cat-item"><span class="dot" style="background:#28a745;"></span> 0–11 : 🟢 Rendah (Edukasi)</div>
+        <div class="cat-item"><span class="dot" style="background:#ffc107;"></span> 12–23 : 🟡 Sedang (Relaksasi)</div>
+        <div class="cat-item"><span class="dot" style="background:#dc3545;"></span> 24–36 : 🔴 Tinggi (Relaksasi + Lapor)</div>
+    </div>
+
+    <form id="skriningForm">
+        <div class="section-title">A. Dimensi Korban</div>
+        <div class="question"><label>1. Saya pernah diejek, dihina, atau dipermalukan teman.</label><select name="q1"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+        <div class="question"><label>2. Saya pernah dikucilkan atau tidak diajak bergaul.</label><select name="q2"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+        <div class="question"><label>3. Saya pernah mendapatkan ancaman/kekerasan fisik.</label><select name="q3"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+        <div class="question"><label>4. Saya pernah dirundung di media sosial/pesan digital.</label><select name="q4"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+
+        <div class="section-title">B. Dimensi Pelaku</div>
+        <div class="question"><label>5. Saya pernah mengejek atau menghina teman.</label><select name="q5"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+        <div class="question"><label>6. Saya pernah menyebarkan gosip buruk tentang teman.</label><select name="q6"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+        <div class="question"><label>7. Saya pernah mengucilkan teman dari pergaulan.</label><select name="q7"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+        <div class="question"><label>8. Saya pernah merundung teman di media sosial/grup WA.</label><select name="q8"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+
+        <div class="section-title">C. Dampak Psikososial</div>
+        <div class="question"><label>9. Saya merasa sedih, marah, atau cemas.</label><select name="q9"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+        <div class="question"><label>10. Saya menjadi enggan masuk sekolah/bertemu teman.</label><select name="q10"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+        <div class="question"><label>11. Saya sulit berkonsentrasi belajar.</label><select name="q11"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+        <div class="question"><label>12. Saya merasa tidak berharga atau rendah diri.</label><select name="q12"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+
+        <button type="button" class="btn-hasil" onclick="prosesSkrining()">Cek Hasil & Rekomendasi</button>
+    </form>
+
+    <div id="result" class="result-box"></div>
+</div>
+
+<script>
+    function prosesSkrining() {
+        let form = document.getElementById('skriningForm');
+        let data = new FormData(form);
+        let total = 0;
+        for (let v of data.values()) { total += parseInt(v); }
+
+        let res = document.getElementById('result');
+        res.style.display = 'block';
+
+        if (total <= 11) {
+            res.style.backgroundColor = "#d4edda"; res.style.color = "#155724";
+            res.innerHTML = `<h3>Skor: ${total} - 🟢 Rendah</h3><p>Perundungan minimal. Yuk, tambah wawasanmu di menu Edukasi.</p><a href="edukasi.html" class="btn-link">Menu Edukasi</a>`;
+        } else if (total <= 23) {
+            res.style.backgroundColor = "#fff3cd"; res.style.color = "#856404";
+            res.innerHTML = `<h3>Skor: ${total} - 🟡 Sedang</h3><p>Perundungan ringan-sedang. Tenangkan pikiranmu di menu Relaksasi.</p><a href="relaksasi.html" class="btn-link">Menu Relaksasi</a>`;
+        } else {
+            res.style.backgroundColor = "#f8d7da"; res.style.color = "#721c24";
+            res.innerHTML = `<h3>Skor: ${total} - 🔴 Tinggi</h3><p>Perundungan signifikan. Kami sarankan Relaksasi dan segera Lapor/Pendampingan.</p><a href="relaksasi.html" class="btn-link">Relaksasi</a> <a href="aduan.html" class="btn-link" style="background:#721c24; color:white;">Lapor Aduan</a>`;
+        }
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
