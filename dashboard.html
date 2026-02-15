@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard SI_ERAT - Data Pengaduan</title>
+    <style>
+        :root { --teal: #008080; --mint: #f5fffa; --orange: #ff9800; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--mint); margin: 0; }
+        
+        /* Navigasi Baru */
+        nav { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 10px 5%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-container { display: flex; align-items: center; text-decoration: none; gap: 10px; }
+        .logo-icon { background: var(--teal); color: white; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
+        .logo-text { font-size: 1.2rem; font-weight: bold; color: var(--teal); }
+        .nav-links a { color: #555; margin-left: 20px; text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--teal); }
+
+        header { background: var(--teal); color: white; padding: 2rem 1rem; text-align: center; }
+        
+        .container { padding: 20px; max-width: 1200px; margin: auto; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        h2 { color: var(--teal); border-left: 5px solid var(--orange); padding-left: 15px; margin-bottom: 20px; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; font-size: 0.9rem; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background-color: var(--teal); color: white; text-transform: uppercase; letter-spacing: 1px; }
+        tr:hover { background-color: #f9f9f9; }
+        
+        /* Warna dinamis untuk status */
+        .badge { padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; display: inline-block; }
+        .status-menunggu { background: #fff9c4; color: #856404; } 
+        .status-proses { background: #bbdefb; color: #0d47a1; }    
+        .status-selesai { background: #c8e6c9; color: #1b5e20; }   
+        
+        .btn-aksi { 
+            padding: 8px 15px; cursor: pointer; border-radius: 6px; border: none; 
+            background: var(--teal); color: white; font-weight: bold; transition: 0.2s;
+        }
+        .btn-aksi:hover { background: #006666; transform: translateY(-2px); }
+        .btn-reset { background: #ff4d4d; margin-top: 30px; opacity: 0.8; }
+        .btn-reset:hover { background: #cc0000; opacity: 1; }
+
+        @media (max-width: 768px) {
+            table { display: block; overflow-x: auto; }
+            .nav-links { display: none; } /* Sederhanakan untuk mobile */
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-container">
+        <div class="logo-icon">📊</div>
+        <div class="logo-text">SI_ERAT DASHBOARD</div>
+    </a>
+    <div class="nav-links">
+        <a href="index.html">🏠 Beranda</a>
+        <a href="admin-panel.html" id="linkAdmin" style="display:none;">🛡️ Admin Panel</a>
+        <a href="#" style="color:red;" onclick="logout()">Logout</a>
+    </div>
+</nav>
+
+<header>
+    <h1>Pusat Penanganan Kasus</h1>
+    <p>Monitor dan tindak lanjuti laporan perundungan dari siswa secara real-time.</p>
+</header>
+
+<div class="container">
+    <div class="card">
+        <h2>Daftar Laporan Masuk</h2>
+        <p>Silakan periksa detail laporan dan perbarui status setelah melakukan tindakan lapangan.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Pelapor</th>
+                    <th>Jenis</th>
+                    <th>Lokasi</th>
+                    <th>Detail Masalah</th>
+                    <th>Status</th>
+                    <th>Tindakan</th>
+                </tr>
+            </thead>
+            <tbody id="isiTabel"></tbody>
+        </table>
+        
+        <button class="btn-aksi btn-reset" onclick="hapusSemuaData()">⚠️ Hapus Seluruh Riwayat Laporan</button>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        const role = localStorage.getItem('userRole');
+        
+        // Proteksi Halaman
+        if (!role || role === 'siswa') {
+            alert("Akses ditolak! Halaman ini hanya untuk Guru, Dinkes, atau Admin.");
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // Tampilkan menu Admin jika yang login adalah admin
+        if (role === 'admin') {
+            document.getElementById('linkAdmin').style.display = 'inline';
+        }
+
+        muatLaporan();
+    };
+
+    function muatLaporan() {
+        const listAduan = JSON.parse(localStorage.getItem('listAduan')) || [];
+        const containerTabel = document.getElementById('isiTabel');
+        containerTabel.innerHTML = ''; 
+
+        if (listAduan.length === 0) {
+            containerTabel.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 40px; color: #888;">Belum ada laporan yang masuk ke sistem.</td></tr>';
+            return;
+        }
+
+        listAduan.forEach((aduan, index) => {
+            let badgeClass = "status-menunggu";
+            if (aduan.status === "Sedang Diproses") badgeClass = "status-proses";
+            if (aduan.status === "Selesai") badgeClass = "status-selesai";
+
+            const row = `
+                <tr>
+                    <td><small>${aduan.tanggal}</small></td>
+                    <td><b>${aduan.pelapor}</b></td>
+                    <td><span style="color:var(--teal)">${aduan.jenis}</span></td>
+                    <td>${aduan.lokasi}</td>
+                    <td><i style="font-size: 0.85rem; color: #666;">"${aduan.dampak}"</i></td>
+                    <td><span class="badge ${badgeClass}">${aduan.status}</span></td>
+                    <td>
+                        <button class="btn-aksi" onclick="tindakLanjuti(${index})">Update</button>
+                    </td>
+                </tr>
+            `;
+            containerTabel.innerHTML += row;
+        });
+    }
+
+    function tindakLanjuti(index) {
+        let listAduan = JSON.parse(localStorage.getItem('listAduan')) || [];
+        const aduan = listAduan[index];
+
+        const pilihanStatus = prompt(
+            `Update status penanganan untuk laporan dari ${aduan.pelapor}:\n\n1. Sedang Diproses (Petugas menuju lokasi/investigasi)\n2. Selesai (Masalah telah teratasi)\n\nKetik angka (1/2):`
+        );
+
+        if (pilihanStatus === "1") {
+            listAduan[index].status = "Sedang Diproses";
+        } else if (pilihanStatus === "2") {
+            listAduan[index].status = "Selesai";
+        } else if (pilihanStatus === null) {
+            return; // Jika batal
+        } else {
+            alert("Pilihan tidak valid.");
+            return;
+        }
+
+        localStorage.setItem('listAduan', JSON.stringify(listAduan));
+        muatLaporan();
+        alert("Status berhasil diperbarui ke: " + listAduan[index].status);
+    }
+
+    function hapusSemuaData() {
+        if(confirm("PERINGATAN! Anda akan menghapus SEMUA data laporan secara permanen. Lanjutkan?")) {
+            localStorage.removeItem('listAduan');
+            muatLaporan();
+        }
+    }
+
+    function logout() {
+        if(confirm("Apakah Anda ingin keluar dari Dashboard?")) {
+            localStorage.removeItem('userRole');
+            localStorage.removeItem('username');
+            window.location.href = 'login.html';
+        }
+    }
+</script>
+
+</body>
+</html>

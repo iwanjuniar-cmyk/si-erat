@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SI_ERAT - Relaksasi</title>
+    <style>
+        :root {
+            --teal: #008080;
+            --mint: #f5fffa;
+            --soft-green: #e0f2f1;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--mint); margin: 0; text-align: center; }
+        header { background: var(--teal); color: white; padding: 1.5rem; }
+        
+        /* Navigasi dengan Logo Baru (Sesuai update sebelumnya) */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--teal);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        .logo-container img { height: 40px; margin-right: 10px; border-radius: 50%; }
+        .nav-links a { color: #555; margin-left: 20px; text-decoration: none; font-weight: 500; }
+
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; }
+        
+        /* Frame Video Relaksasi */
+        .video-container {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        video {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+        }
+
+        .instruction { font-size: 1.2rem; color: #555; margin-bottom: 30px; line-height: 1.5; }
+        .quote { font-style: italic; color: var(--teal); background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-container">
+        <img src="logo.png" alt="Logo SI_ERAT">
+        SI_ERAT
+    </a>
+    <div class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="edukasi.html">Edukasi</a>
+        <a href="relaksasi.html">Relaksasi</a>
+        <a href="aduan.html">Lapor Aduan</a>
+    </div>
+</nav>
+
+<header>
+    <h1>Fitur Relaksasi</h1>
+</header>
+
+<div class="container">
+    <h2>Video Panduan Relaksasi</h2>
+    <p class="instruction">Tonton video di bawah ini dan ikuti panduannya untuk menenangkan pikiran serta meredakan kecemasan.</p>
+    
+    <div class="video-container">
+        <video controls>
+            <source src="video-relaksasi.mp4" type="video/mp4">
+            Browser kamu tidak mendukung pemutar video.
+        </video>
+    </div>
+        <video controls>
+            <source src="video-relaksasi1.mp4" type="video/mp4">
+            Browser kamu tidak mendukung pemutar video.
+        </video>
+    <div class="quote">
+        <p>"Kamu lebih kuat dari yang kamu bayangkan. Ambil jeda sejenak untuk dirimu sendiri."</p>
+        <small>— Biblioterapi SI_ERAT</small>
+    </div>
+</div>
+
+</body>
+</html>

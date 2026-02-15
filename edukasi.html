@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SI_ERAT - Pusat Edukasi</title>
+    <style>
+        :root { --teal: #008080; --mint: #f5fffa; --dark: #333; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--mint); margin: 0; color: var(--dark); }
+        
+        /* Navigasi Modern */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-container { display: flex; align-items: center; text-decoration: none; gap: 10px; }
+        .logo-icon { background: var(--teal); color: white; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 1.2rem; }
+        .logo-text { font-size: 1.2rem; font-weight: 800; color: var(--teal); }
+        .nav-links a { color: #555; margin-left: 20px; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--teal); }
+
+        header { 
+            background: linear-gradient(135deg, var(--teal), #006666); 
+            color: white; padding: 3rem 1rem; text-align: center; 
+        }
+
+        .container { max-width: 1100px; margin: -40px auto 50px; padding: 0 20px; }
+        
+        /* Kartu Materi Utama */
+        .grid-edukasi { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        
+        .card-konten { 
+            background: white; border-radius: 20px; overflow: hidden; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .card-konten:hover { transform: translateY(-10px); }
+        
+        .card-image { width: 100%; height: 200px; object-fit: cover; background: #eee; }
+        
+        .info { padding: 25px; }
+        .tag { background: #e0f2f1; color: var(--teal); padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        
+        h3 { margin: 15px 0 10px; color: var(--teal); font-size: 1.4rem; }
+        p { color: #666; line-height: 1.6; font-size: 0.95rem; }
+        
+        /* Konten Edukasi di Dalam */
+        .edu-detail { margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; }
+        .edu-list { padding-left: 20px; margin: 10px 0; }
+        .edu-list li { margin-bottom: 5px; color: #555; }
+
+        .btn-baca { 
+            display: inline-block; margin-top: 15px; padding: 10px 20px; 
+            background: var(--teal); color: white; text-decoration: none; 
+            border-radius: 8px; font-weight: bold; font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-container">
+        <div class="logo-icon">🛡️</div>
+        <div class="logo-text">SI_ERAT</div>
+    </a>
+    <div class="nav-links" id="auth-menu">
+        <a href="index.html">Beranda</a>
+        <a href="edukasi.html">Edukasi</a>
+        <a href="relaksasi.html">Relaksasi</a>
+        <a href="aduan.html">Lapor Aduan</a>
+        <a href="skrining.html">Skrining</a>
+    </div>
+</nav>
+
+<header>
+    <h1 style="color: white;">Pusat Belajar SI_ERAT</h1>
+<p style="color: white;">Mari kenali, cegah, dan hadapi perundungan demi lingkungan sekolah yang nyaman.</p>
+</header>
+
+<div class="container">
+    <div class="grid-edukasi">
+        
+        <div class="card-konten">
+            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=500" class="card-image" alt="Edukasi">
+            <div class="info">
+                <span class="tag">Wawasan</span>
+                <h3>4 Jenis Perundungan</h3>
+                <p>Perundungan bukan hanya fisik, yuk kenali bentuk lainnya:</p>
+                <div class="edu-detail">
+                    <ul class="edu-list">
+                        <li><b>Fisik:</b> Memukul, menendang, merusak barang.</li>
+                        <li><b>Verbal:</b> Mengejek, menghina, menyebar gosip.</li>
+                        <li><b>Sosial:</b> Mengucilkan, mendiamkan teman.</li>
+                        <li><b>Cyber:</b> Menghujat di medsos atau grup chat.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-konten">
+            <div style="background: #008080; height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🤝</div>
+            <div class="info">
+                <span class="tag">Tips & Trik</span>
+                <h3>Hadapi dengan Berani</h3>
+                <p>Jika kamu atau temanmu mengalami perundungan, lakukan langkah ini:</p>
+                <div class="edu-detail">
+                    <ul class="edu-list">
+                        <li><b>Tetap Tenang:</b> Jangan tunjukkan rasa takut di depan pelaku.</li>
+                        <li><b>Bicara Tegas:</b> Katakan "Berhenti, aku tidak suka diperlakukan begitu."</li>
+                        <li><b>Cari Bantuan:</b> Segera lapor ke guru atau lewat menu Aduan.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-konten">
+            <div style="background: #ffb6c1; height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🧠</div>
+            <div class="info">
+                <span class="tag">Kesehatan Mental</span>
+                <h3>Dampak Perundungan</h3>
+                <p>Mengapa kita harus berhenti merundung? Karena dampaknya sangat berat:</p>
+                <div class="edu-detail">
+                    <ul class="edu-list">
+                        <li>Menurunnya kepercayaan diri.</li>
+                        <li>Prestasi belajar menurun drastis.</li>
+                        <li>Gangguan kecemasan dan depresi.</li>
+                        <li>Merasa tidak aman berada di sekolah.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Logika Navigasi (Sama seperti halaman lain agar sinkron)
+    window.onload = function() {
+        const role = localStorage.getItem('userRole');
+        const authMenu = document.getElementById('auth-menu');
+        if (role) {
+            const linkLogin = document.getElementById('linkLogin');
+            if(linkLogin) linkLogin.remove();
+            authMenu.innerHTML += `<a href="#" style="color:#dc3545; font-weight:bold;" onclick="logout()">Logout</a>`;
+        }
+    };
+
+    function logout() {
+        if(confirm("Keluar dari halaman edukasi?")) {
+            localStorage.removeItem('userRole');
+            window.location.href = 'index.html';
+        }
+    }
+</script>
+
+</body>
+</html>

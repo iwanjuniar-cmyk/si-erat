@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SI_ERAT - Sistem Informasi Edukasi & Relaksasi Terintegrasi</title>
+    <style>
+        :root { --teal: #008080; --mint: #f5fffa; --dark-teal: #006666; --orange: #ff9800; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--mint); margin: 0; color: #333; }
+        
+        /* Navigasi */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo { font-weight: bold; font-size: 1.5rem; color: var(--teal); text-decoration: none; }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { color: #555; margin-left: 20px; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--teal); }
+        .btn-logout { color: #dc3545 !important; font-weight: bold; cursor: pointer; }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 10%;
+            background: linear-gradient(135deg, var(--teal), var(--dark-teal));
+            color: white;
+            text-align: center;
+        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto 30px; }
+
+        /* Menu Grid */
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 50px 10%;
+            margin-top: -50px;
+        }
+        .menu-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+        .menu-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-bottom: 4px solid var(--teal); }
+        .menu-card i { font-size: 3rem; display: block; margin-bottom: 15px; }
+        .menu-card h3 { color: var(--teal); margin-bottom: 10px; }
+        
+        /* Dashboard Button Khusus Petugas & Admin */
+        #admin-panel-card, #master-admin-card { display: none; }
+        .special-menu { background: #fff3cd !important; border: 2px dashed var(--orange) !important; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">🛡️ SI_ERAT</a>
+    <div class="nav-links" id="main-nav">
+        <a href="index.html">Beranda</a>
+        <a href="edukasi.html">Edukasi</a>
+        <a href="relaksasi.html">Relaksasi</a>
+        <span id="dynamic-links"></span>
+        <a href="login.html" id="linkLogin">Login</a>
+        <a href="daftar.html" id="linkDaftar">Daftar</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Selamat Datang di SI_ERAT</h1>
+    <p>Sistem Informasi Edukasi dan Relaksasi Terintegrasi untuk mencegah perundungan dan menjaga kesehatan mental siswa.</p>
+    <div id="user-greeting" style="font-weight: bold; font-size: 1.2rem;"></div>
+</section>
+
+<div class="menu-container">
+    <a href="edukasi.html" class="menu-card">
+        <i>📚</i>
+        <h3>Edukasi</h3>
+        <p>Pelajari apa itu perundungan dan cara mencegahnya.</p>
+    </a>
+
+    <a href="skrining.html" class="menu-card">
+        <i>📝</i>
+        <h3>Skrining</h3>
+        <p>Cek kondisi kesehatan mental dan tingkat perundunganmu.</p>
+    </a>
+
+    <a href="relaksasi.html" class="menu-card">
+        <i>🌿</i>
+        <h3>Relaksasi</h3>
+        <p>Tenangkan pikiran dengan panduan video relaksasi.</p>
+    </a>
+
+    <a href="aduan.html" class="menu-card">
+        <i>📢</i>
+        <h3>Lapor Aduan</h3>
+        <p>Laporkan tindakan perundungan dengan aman dan rahasia.</p>
+    </a>
+
+    <a href="dashboard.html" class="menu-card special-menu" id="admin-panel-card">
+        <i>📊</i>
+        <h3>Dashboard Petugas</h3>
+        <p>Pantau laporan masuk dan tindak lanjuti kasus siswa.</p>
+    </a>
+
+    <a href="admin-panel.html" class="menu-card special-menu" id="master-admin-card" style="border-color: #ff4d4d !important;">
+        <i>⚙️</i>
+        <h3>Admin Panel</h3>
+        <p>Kelola pengguna, verifikasi akun, dan pengaturan sistem.</p>
+    </a>
+</div>
+
+<script>
+    window.onload = function() {
+        const role = localStorage.getItem('userRole');
+        const username = localStorage.getItem('username') || "User";
+        const dynamicLinks = document.getElementById('dynamic-links');
+        const greeting = document.getElementById('user-greeting');
+        
+        // Elemen Card Menu
+        const adminCard = document.getElementById('admin-panel-card');
+        const masterAdminCard = document.getElementById('master-admin-card');
+
+        if (role) {
+            // 1. Sembunyikan tombol Login/Daftar
+            if(document.getElementById('linkLogin')) document.getElementById('linkLogin').style.display = 'none';
+            if(document.getElementById('linkDaftar')) document.getElementById('linkDaftar').style.display = 'none';
+
+            // 2. Tambahkan tombol Logout di Navigasi
+            dynamicLinks.innerHTML = `<a href="#" class="btn-logout" onclick="logout()">Logout (${username})</a>`;
+            
+            // 3. Sapa user
+            greeting.innerHTML = `Selamat datang kembali, <span style="text-transform:uppercase; color:#fff3cd;">${role}</span>!`;
+
+            // 4. LOGIKA ROLE
+            // Jika Petugas (Guru, Dinkes, Puskesmas) ATAU Admin
+            if (role === 'dinkes' || role === 'guru' || role === 'puskesmas' || role === 'admin' || role === 'admin-panel') {
+                adminCard.style.display = 'block'; // Munculkan Dashboard Laporan
+            }
+
+            // Jika khusus Admin
+            if (role === 'admin' || role === 'admin-panel') {
+                masterAdminCard.style.display = 'block'; // Munculkan Panel Kelola User
+                // Tambahkan link di navigasi juga agar mudah
+                dynamicLinks.innerHTML = `
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="admin-panel.html">Admin Panel</a>
+                    ` + dynamicLinks.innerHTML;
+            }
+        }
+    };
+
+    function logout() {
+        if(confirm("Apakah Anda yakin ingin keluar?")) {
+            localStorage.clear(); // Bersihkan semua data login
+            window.location.href = 'index.html';
+        }
+    }
+</script>
+
+</body>
+</html>
