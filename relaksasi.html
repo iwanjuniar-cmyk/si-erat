@@ -3,96 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SI_ERAT - Relaksasi</title>
+    <title>SI_ERAT - Ruang Relaksasi</title>
     <style>
         :root {
             --teal: #008080;
-            --mint: #f5fffa;
-            --soft-green: #e0f2f1;
+            --dark-teal: #006666;
+            --mint: #f0fdfa;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.8);
         }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--mint); margin: 0; text-align: center; }
-        header { background: var(--teal); color: white; padding: 1.5rem; }
-        
-        /* Navigasi dengan Logo Baru (Sesuai update sebelumnya) */
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, var(--mint) 0%, #e0f2f1 100%);
+            margin: 0; 
+            color: #2d3748; 
+            line-height: 1.6;
+        }
+
+        /* Navigasi */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 10%;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 8%;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
+
         .logo-container {
             display: flex;
             align-items: center;
             text-decoration: none;
             color: var(--teal);
-            font-weight: bold;
-            font-size: 1.3rem;
+            font-weight: 700;
+            font-size: 1.4rem;
         }
-        .logo-container img { height: 40px; margin-right: 10px; border-radius: 50%; }
-        .nav-links a { color: #555; margin-left: 20px; text-decoration: none; font-weight: 500; }
 
-        .container { max-width: 800px; margin: 40px auto; padding: 20px; }
-        
-        /* Frame Video Relaksasi */
-        .video-container {
-            background: white;
-            padding: 15px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+        .logo-container img { height: 40px; margin-right: 12px; border-radius: 50%; }
+
+        .nav-links a { 
+            color: #4a5568; 
+            margin-left: 25px; 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: 0.3s;
         }
+
+        .nav-links a:hover { color: var(--teal); }
+
+        /* Header */
+        header { 
+            background: linear-gradient(rgba(0, 128, 128, 0.85), rgba(0, 102, 102, 0.85)), 
+                        url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white; 
+            padding: 5rem 1rem; 
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .container { max-width: 900px; margin: -30px auto 40px; padding: 20px; position: relative; z-index: 10; }
+
+        /* Kartu Video Pembaruan */
+        .video-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            margin-bottom: 40px;
+            border: 1px solid rgba(0, 128, 128, 0.1);
+        }
+
+        .video-card h3 { 
+            color: var(--dark-teal); 
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Wrapper Video Lokal */
+        .video-wrapper {
+            width: 100%;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            line-height: 0; /* Menghilangkan gap di bawah video */
+        }
+
         video {
             width: 100%;
-            border-radius: 15px;
+            height: auto;
             display: block;
         }
 
-        .instruction { font-size: 1.2rem; color: #555; margin-bottom: 30px; line-height: 1.5; }
-        .quote { font-style: italic; color: var(--teal); background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .quote-box { 
+            background: linear-gradient(135deg, var(--teal), var(--dark-teal));
+            color: white;
+            padding: 40px; 
+            border-radius: 24px; 
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        footer { 
+            padding: 40px; 
+            text-align: center; 
+            font-size: 0.9rem; 
+            color: #718096; 
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            header h1 { font-size: 2rem; }
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <nav>
     <a href="index.html" class="logo-container">
-        <img src="logo.png" alt="Logo SI_ERAT">
+        <img src="logo.png" alt="Logo" onerror="this.src='https://ui-avatars.com/api/?name=SI+ERAT&background=008080&color=fff'"> 
         SI_ERAT
     </a>
     <div class="nav-links">
         <a href="index.html">Beranda</a>
         <a href="edukasi.html">Edukasi</a>
-        <a href="relaksasi.html">Relaksasi</a>
+        <a href="relaksasi.html" style="color: var(--teal); font-weight: 700;">Relaksasi</a>
         <a href="aduan.html">Lapor Aduan</a>
     </div>
 </nav>
 
 <header>
-    <h1>Fitur Relaksasi</h1>
+    <h1>Ruang Relaksasi</h1>
+    <p>Gunakan panduan video di bawah ini untuk membantu menenangkan pikiran dan meredakan stres.</p>
 </header>
 
 <div class="container">
-    <h2>Video Panduan Relaksasi</h2>
-    <p class="instruction">Tonton video di bawah ini dan ikuti panduannya untuk menenangkan pikiran serta meredakan kecemasan.</p>
     
-    <div class="video-container">
-        <video controls>
-            <source src="video-relaksasi.mp4" type="video/mp4">
-            Browser kamu tidak mendukung pemutar video.
-        </video>
+    <div class="video-card">
+        <h3><span>🌿</span> Relaksasi Pernapasan & Ketenangan</h3>
+        <div class="video-wrapper">
+            <video controls poster="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=60">
+                <source src="video-relaksasi.mp4" type="video/mp4">
+                Browser Anda tidak mendukung pemutar video.
+            </video>
+        </div>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+            <b>Instruksi:</b> Cari posisi duduk yang nyaman, ikuti ritme pernapasan dalam video ini selama 5-10 menit.
+        </p>
     </div>
-        <video controls>
-            <source src="video-relaksasi1.mp4" type="video/mp4">
-            Browser kamu tidak mendukung pemutar video.
-        </video>
-    <div class="quote">
-        <p>"Kamu lebih kuat dari yang kamu bayangkan. Ambil jeda sejenak untuk dirimu sendiri."</p>
-        <small>— Biblioterapi SI_ERAT</small>
+
+    <div class="video-card">
+        <h3><span>🎵</span> Meditasi & Biblioterapi Visual</h3>
+        <div class="video-wrapper">
+            <video controls>
+                <source src="video-relaksasi1.mp4" type="video/mp4">
+                Browser Anda tidak mendukung pemutar video.
+            </video>
+        </div>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+            <b>Instruksi:</b> Fokuskan pandangan pada gerakan visual dan dengarkan audionya untuk mencapai relaksasi mendalam.
+        </p>
     </div>
+
+    <div class="quote-box">
+        <p>"Kamu lebih kuat dari yang kamu bayangkan. Mengambil jeda bukan berarti berhenti, tapi mempersiapkan diri untuk melangkah lebih jauh."</p>
+        <small>— Tim Biblioterapi SI_ERAT</small>
+    </div>
+
+    <footer>
+        &copy; 2026 SI_ERAT - Oleh Ns. Odis Runesi, M.Kep<br>
+        Fakultas Ilmu Keperawatan Universitas Indonesia
+    </footer>
 </div>
 
 </body>
