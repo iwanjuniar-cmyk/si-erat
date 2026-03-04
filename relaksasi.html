@@ -18,10 +18,8 @@
             background: linear-gradient(135deg, var(--mint) 0%, #e0f2f1 100%);
             margin: 0; 
             color: #2d3748; 
-            line-height: 1.6;
         }
 
-        /* Navigasi */
         nav {
             display: flex;
             justify-content: space-between;
@@ -41,27 +39,16 @@
             text-decoration: none;
             color: var(--teal);
             font-weight: 700;
-            font-size: 1.4rem;
         }
 
         .logo-container img { height: 40px; margin-right: 12px; border-radius: 50%; }
 
-        .nav-links a { 
-            color: #4a5568; 
-            margin-left: 25px; 
-            text-decoration: none; 
-            font-weight: 500; 
-            transition: 0.3s;
-        }
+        .nav-links a { color: #4a5568; margin-left: 25px; text-decoration: none; }
 
-        .nav-links a:hover { color: var(--teal); }
-
-        /* Header */
         header { 
             background: linear-gradient(rgba(0, 128, 128, 0.85), rgba(0, 102, 102, 0.85)), 
                         url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
-            background-position: center;
             color: white; 
             padding: 5rem 1rem; 
             text-align: center;
@@ -70,38 +57,31 @@
 
         .container { max-width: 900px; margin: -30px auto 40px; padding: 20px; position: relative; z-index: 10; }
 
-        /* Kartu Video Pembaruan */
         .video-card {
             background: var(--white);
             padding: 25px;
             border-radius: 24px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.06);
             margin-bottom: 40px;
-            border: 1px solid rgba(0, 128, 128, 0.1);
         }
 
-        .video-card h3 { 
-            color: var(--dark-teal); 
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Wrapper Video Lokal */
+        /* Perbaikan Penting: Wrapper untuk Link YouTube */
         .video-wrapper {
-            width: 100%;
-            border-radius: 18px;
+            position: relative;
+            padding-bottom: 56.25%; /* Rasio 16:9 */
+            height: 0;
             overflow: hidden;
+            border-radius: 18px;
             background: #000;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            line-height: 0; /* Menghilangkan gap di bawah video */
         }
 
-        video {
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            border: 0;
         }
 
         .quote-box { 
@@ -110,22 +90,10 @@
             padding: 40px; 
             border-radius: 24px; 
             text-align: center;
-            margin: 50px 0;
         }
 
-        footer { 
-            padding: 40px; 
-            text-align: center; 
-            font-size: 0.9rem; 
-            color: #718096; 
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            header h1 { font-size: 2rem; }
-        }
+        footer { padding: 40px; text-align: center; font-size: 0.9rem; color: #718096; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -144,7 +112,7 @@
 
 <header>
     <h1>Ruang Relaksasi</h1>
-    <p>Gunakan panduan video di bawah ini untuk membantu menenangkan pikiran dan meredakan stres.</p>
+    <p>Gunakan panduan video di bawah ini untuk membantu menenangkan pikiran.</p>
 </header>
 
 <div class="container">
@@ -152,37 +120,40 @@
     <div class="video-card">
         <h3><span>🌿</span> Relaksasi Pernapasan & Ketenangan</h3>
         <div class="video-wrapper">
-            <video controls poster="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=60">
-                <source src="video-relaksasi.mp4" type="video/mp4">
-                Browser Anda tidak mendukung pemutar video.
-            </video>
+            <iframe 
+                src="https://www.youtube.com/embed/kKlZ1UOxIFc" 
+                title="Relaksasi Pernapasan" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
         </div>
         <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
-            <b>Instruksi:</b> Cari posisi duduk yang nyaman, ikuti ritme pernapasan dalam video ini selama 5-10 menit.
+            <b>Instruksi:</b> Ikuti ritme pernapasan dalam video ini selama 5-10 menit.
         </p>
     </div>
 
     <div class="video-card">
-        <h3><span>🎵</span> Meditasi & Biblioterapi Visual</h3>
+        <h3><span>🎵</span> Meditasi & Relaksasi Otot Progresif</h3>
         <div class="video-wrapper">
-            <video controls>
-                <source src="video-relaksasi1.mp4" type="video/mp4">
-                Browser Anda tidak mendukung pemutar video.
-            </video>
+            <iframe 
+                src="https://www.youtube.com/embed/a3W8NZQrowA" 
+                title="Meditasi Visual" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
         </div>
         <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
-            <b>Instruksi:</b> Fokuskan pandangan pada gerakan visual dan dengarkan audionya untuk mencapai relaksasi mendalam.
+            <b>Instruksi:</b> Lakukan gerakan sesuai panduan poster Relaksasi Otot Progresif.
         </p>
     </div>
 
     <div class="quote-box">
-        <p>"Kamu lebih kuat dari yang kamu bayangkan. Mengambil jeda bukan berarti berhenti, tapi mempersiapkan diri untuk melangkah lebih jauh."</p>
+        <p>"Kamu lebih kuat dari yang kamu bayangkan. Mengambil jeda bukan berarti berhenti."</p>
         <small>— Tim Biblioterapi SI_ERAT</small>
     </div>
 
     <footer>
-        &copy; 2026 SI_ERAT - Oleh Ns. Odis Runesi, M.Kep<br>
-        Fakultas Ilmu Keperawatan Universitas Indonesia
+        &copy; 2026 SI_ERAT - Oleh Ns. Odis Runesi, M.Kep
     </footer>
 </div>
 
