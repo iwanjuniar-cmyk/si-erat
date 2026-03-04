@@ -8,14 +8,10 @@
         :root { --teal: #008080; --mint: #f5fffa; --dark: #333; }
         body { font-family: 'Segoe UI', sans-serif; background-color: var(--mint); margin: 0; color: var(--dark); }
         
-        /* Navigasi Modern */
+        /* Navigasi */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 10%;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 10%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky; top: 0; z-index: 1000;
         }
         .logo-container { display: flex; align-items: center; text-decoration: none; gap: 10px; }
@@ -31,35 +27,34 @@
 
         .container { max-width: 1100px; margin: -40px auto 50px; padding: 0 20px; }
         
-        /* Kartu Materi Utama */
-        .grid-edukasi { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        
+        /* Kartu Materi */
+        .grid-edukasi { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 50px; }
         .card-konten { 
             background: white; border-radius: 20px; overflow: hidden; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s;
             border: 1px solid rgba(0,0,0,0.05);
         }
         .card-konten:hover { transform: translateY(-10px); }
-        
-        .card-image { width: 100%; height: 200px; object-fit: cover; background: #eee; }
-        
         .info { padding: 25px; }
         .tag { background: #e0f2f1; color: var(--teal); padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-        
         h3 { margin: 15px 0 10px; color: var(--teal); font-size: 1.4rem; }
-        p { color: #666; line-height: 1.6; font-size: 0.95rem; }
-        
-        /* Konten Edukasi di Dalam */
-        .edu-detail { margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; }
-        .edu-list { padding-left: 20px; margin: 10px 0; }
-        .edu-list li { margin-bottom: 5px; color: #555; }
 
-        .btn-baca { 
-            display: inline-block; margin-top: 15px; padding: 10px 20px; 
-            background: var(--teal); color: white; text-decoration: none; 
-            border-radius: 8px; font-weight: bold; font-size: 0.9rem;
+        /* Galeri Poster */
+        .section-title { text-align: center; margin: 60px 0 30px; color: var(--teal); font-weight: 800; }
+        .grid-poster { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .poster-item { 
+            background: white; padding: 12px; border-radius: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; text-align: center;
         }
+        .poster-item:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .poster-item img { 
+            width: 100%; height: auto; border-radius: 8px; cursor: zoom-in;
+            border: 1px solid #eee;
+        }
+        .poster-caption { margin-top: 12px; font-size: 0.95rem; font-weight: bold; color: var(--teal); }
+
+        .edu-list { padding-left: 20px; margin: 10px 0; font-size: 0.9rem; color: #555; }
+        footer { text-align: center; padding: 40px; color: #888; font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -79,78 +74,74 @@
 </nav>
 
 <header>
-    <h1 style="color: white;">Pusat Belajar SI_ERAT</h1>
-<p style="color: white;">Mari kenali, cegah, dan hadapi perundungan demi lingkungan sekolah yang nyaman.</p>
+    <h1>Pusat Belajar SI_ERAT</h1>
+    <p>Mari kenali, cegah, dan hadapi perundungan bersama Ns. Odis Runesi, M.Kep</p>
 </header>
 
 <div class="container">
     <div class="grid-edukasi">
-        
         <div class="card-konten">
-            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=500" class="card-image" alt="Edukasi">
             <div class="info">
                 <span class="tag">Wawasan</span>
-                <h3>4 Jenis Perundungan</h3>
-                <p>Perundungan bukan hanya fisik, yuk kenali bentuk lainnya:</p>
-                <div class="edu-detail">
-                    <ul class="edu-list">
-                        <li><b>Fisik:</b> Memukul, menendang, merusak barang.</li>
-                        <li><b>Verbal:</b> Mengejek, menghina, menyebar gosip.</li>
-                        <li><b>Sosial:</b> Mengucilkan, mendiamkan teman.</li>
-                        <li><b>Cyber:</b> Menghujat di medsos atau grup chat.</li>
-                    </ul>
-                </div>
+                <h3>Mengenal Bullying</h3>
+                <p>Perilaku agresif yang dilakukan secara sengaja dan berulang untuk menyakiti atau menekan orang lain.</p>
+                <ul class="edu-list">
+                    <li><b>Fisik:</b> Memukul/Mendorong</li>
+                    <li><b>Verbal:</b> Mengejek Penampilan</li>
+                    <li><b>Sosial:</b> Mengucilkan/Gosip</li>
+                    <li><b>Cyber:</b> Bullying di Media Sosial</li>
+                </ul>
             </div>
         </div>
-
         <div class="card-konten">
-            <div style="background: #008080; height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🤝</div>
             <div class="info">
-                <span class="tag">Tips & Trik</span>
-                <h3>Hadapi dengan Berani</h3>
-                <p>Jika kamu atau temanmu mengalami perundungan, lakukan langkah ini:</p>
-                <div class="edu-detail">
-                    <ul class="edu-list">
-                        <li><b>Tetap Tenang:</b> Jangan tunjukkan rasa takut di depan pelaku.</li>
-                        <li><b>Bicara Tegas:</b> Katakan "Berhenti, aku tidak suka diperlakukan begitu."</li>
-                        <li><b>Cari Bantuan:</b> Segera lapor ke guru atau lewat menu Aduan.</li>
-                    </ul>
-                </div>
+                <span class="tag">Kesehatan</span>
+                <h3>Dampak & Gejala</h3>
+                <p>Stres dan kecemasan sering muncul akibat tekanan akademik maupun sosial di sekolah.</p>
+                <ul class="edu-list">
+                    <li>Mudah marah atau menangis</li>
+                    <li>Sulit fokus & prestasi menurun</li>
+                    <li>Gangguan tidur & nafsu makan</li>
+                    <li>Sakit kepala atau jantung berdebar</li>
+                </ul>
             </div>
         </div>
+    </div>
 
-        <div class="card-konten">
-            <div style="background: #ffb6c1; height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🧠</div>
-            <div class="info">
-                <span class="tag">Kesehatan Mental</span>
-                <h3>Dampak Perundungan</h3>
-                <p>Mengapa kita harus berhenti merundung? Karena dampaknya sangat berat:</p>
-                <div class="edu-detail">
-                    <ul class="edu-list">
-                        <li>Menurunnya kepercayaan diri.</li>
-                        <li>Prestasi belajar menurun drastis.</li>
-                        <li>Gangguan kecemasan dan depresi.</li>
-                        <li>Merasa tidak aman berada di sekolah.</li>
-                    </ul>
-                </div>
-            </div>
+    <h2 class="section-title">🖼️ Infografis & Poster Edukasi</h2>
+    <div class="grid-poster">
+        <div class="poster-item">
+            <img src="STOP BULLYING.png" alt="Poster Stop Bullying" onclick="window.open(this.src)">
+            <div class="poster-caption">Stop Bullying</div>
         </div>
-
+        <div class="poster-item">
+            <img src="Manajemen Stress dan Kecemasan.png" alt="Poster Manajemen Stress" onclick="window.open(this.src)">
+            <div class="poster-caption">Manajemen Stres</div>
+        </div>
+        <div class="poster-item">
+            <img src="Relaksaso Otot Progresif.png" alt="Poster Relaksasi Otot" onclick="window.open(this.src)">
+            <div class="poster-caption">Relaksasi Otot Progresif</div>
+        </div>
+        <div class="poster-item">
+            <img src="Mindfull Breathing.png" alt="Poster Mindfull Breathing" onclick="window.open(this.src)">
+            <div class="poster-caption">Mindfull Breathing</div>
+        </div>
     </div>
 </div>
 
+<footer>
+    &copy; 2026 SI_ERAT - Oleh Ns. Odis Runesi, M.Kep<br>
+    Fakultas Ilmu Keperawatan Universitas Indonesia
+</footer>
+
 <script>
-    // Logika Navigasi (Sama seperti halaman lain agar sinkron)
     window.onload = function() {
         const role = localStorage.getItem('userRole');
         const authMenu = document.getElementById('auth-menu');
         if (role) {
-            const linkLogin = document.getElementById('linkLogin');
-            if(linkLogin) linkLogin.remove();
             authMenu.innerHTML += `<a href="#" style="color:#dc3545; font-weight:bold;" onclick="logout()">Logout</a>`;
         }
     };
-
     function logout() {
         if(confirm("Keluar dari halaman edukasi?")) {
             localStorage.removeItem('userRole');
